@@ -1,29 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Cart from './pages/Cart';
-import AdminPanel from './pages/AdminPanel';
-import { CartProvider } from './context/CartContext';
-import { UserProvider } from './context/UserContext';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ProductsPage from './pages/ProductsPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import './styles.css';
 
-const App = () => {
+function App() {
   return (
-    <UserProvider>
-      <CartProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/admin" element={<AdminPanel />} />
-          </Routes>
-        </Router>
-      </CartProvider>
-    </UserProvider>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;

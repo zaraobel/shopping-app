@@ -1,0 +1,12 @@
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .product-list div {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+  }
+  
