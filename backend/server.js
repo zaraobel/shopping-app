@@ -25,10 +25,12 @@ app.use(bodyParser.json());
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const paymentRoutes = require('./routes/paymentRoutes'); // Add the payment routes here
 
 app.use('/api/products', productRoutes(pool));
 app.use('/api/users', userRoutes(pool));
 app.use('/api/orders', orderRoutes(pool));
+app.use('/api/payment', paymentRoutes); // Add this line to use the payment routes
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

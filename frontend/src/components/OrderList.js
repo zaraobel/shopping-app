@@ -5,7 +5,7 @@ const OrderList = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('/orders')
+    axios.get(`${process.env.REACT_APP_API_URL}/orders`)
       .then(response => setOrders(response.data))
       .catch(error => console.error(error));
   }, []);

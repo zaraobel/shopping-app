@@ -5,7 +5,7 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('/users')
+    axios.get(`${process.env.REACT_APP_API_URL}/users`)
       .then(response => setUsers(response.data))
       .catch(error => console.error(error));
   }, []);

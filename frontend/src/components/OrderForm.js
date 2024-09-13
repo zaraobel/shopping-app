@@ -18,7 +18,7 @@ const OrderForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/orders', formData)
+    axios.post(`${process.env.REACT_APP_API_URL}/orders`, formData)
       .then(response => console.log(response.data))
       .catch(error => console.error(error));
   };

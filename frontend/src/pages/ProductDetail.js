@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/products/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/products/${id}`)
       .then(response => setProduct(response.data))
       .catch(error => console.error(error));
   }, [id]);
