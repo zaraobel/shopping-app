@@ -9,6 +9,7 @@ services:
       POSTGRES_USER: your_username
       POSTGRES_PASSWORD: your_password
       POSTGRES_DB: shopping_app
+      POSTGRES_HOST: db
     depends_on:
       - db
     volumes:

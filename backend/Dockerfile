@@ -1,18 +1,29 @@
-# Use an official Node.js runtime as the base image
 FROM node:14
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# Install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the application code
+# Install PostgreSQL client to use psql
+RUN apt-get update && apt-get install -y postgresql-client
+
+# Copy app code
 COPY . .
 
-# Expose the backend port
+# Copy the seed script to the container
+COPY seed.sh /app/seed.sh
+
+# Make the seed script executable
+RUN chmod +x /app/seed.sh
+
+# Expose the application port
 EXPOSE 5000
 
-# Run the app
-CMD ["node", "index.js"]
+# Use the seed script as the entrypoint
+ENTRYPOINT ["/app/seed.sh"]
+
+# Run the backend server
+CMD ["npm", "start"]
